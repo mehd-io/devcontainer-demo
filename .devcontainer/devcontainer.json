@@ -1,0 +1,48 @@
+{
+	"name": "Python 3.8",
+	"build": {
+		"dockerfile": "../docker/dev.Dockerfile",
+		"context": "..",
+		// Update 'VARIANT' to pick a Python version. Rebuild the container 
+		// if it already exists to update. Available variants: 3, 3.6, 3.7, 3.8 
+		"args": { "VARIANT": "3.8" }
+	},
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/zsh",
+		"python.pythonPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+		"python.formatting.blackPath": "/usr/local/bin/black",
+		"python.linting.banditPath": "/usr/local/bin/bandit",
+		"python.linting.flake8Path": "/usr/local/bin/flake8",
+		"python.linting.mypyPath": "/usr/local/bin/mypy",
+		"python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
+		"python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
+		"python.linting.pylintPath": "/usr/local/bin/pylint",
+		"python.testing.pytestPath": "/usr/local/bin/pytest",
+		"python.testing.pytestEnabled":true,
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"eamodio.gitlens",
+		"ms-python.vscode-pylance",
+		"yzhang.markdown-all-in-one",
+		"ms-vsliveshare.vsliveshare-pack"
+	],
+
+	"postCreateCommand":"poetry install",
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8080],
+
+	"mounts": [
+		"source=${localEnv:HOME}/.config,target=/root/.config,type=bind,consistency=cached",
+		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+		"source=${localEnv:HOME}/.docker,target=/root/.docker,type=bind",
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+	  ]
+}
