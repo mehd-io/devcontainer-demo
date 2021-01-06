@@ -32,17 +32,15 @@
 		"eamodio.gitlens",
 		"ms-python.vscode-pylance",
 		"yzhang.markdown-all-in-one",
-		"ms-vsliveshare.vsliveshare-pack"
+		"ms-vsliveshare.vsliveshare-pack",
+		"streetsidesoftware.avro"
 	],
 
-	"postCreateCommand":"poetry install",
+	"postCreateCommand":"poetry config virtualenvs.create false && poetry install",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8080],
 
 	"mounts": [
-		"source=${localEnv:HOME}/.config,target=/root/.config,type=bind,consistency=cached",
-		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
-		"source=${localEnv:HOME}/.docker,target=/root/.docker,type=bind",
-		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
 	  ]
 }
