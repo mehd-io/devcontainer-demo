@@ -1,6 +1,7 @@
 {
 	"name": "Python 3.8",
 	"build": {
+		// Path to dockerfile
 		"dockerfile": "../docker/dev.Dockerfile",
 		"context": "..",
 		// Update 'VARIANT' to pick a Python version. Rebuild the container 
@@ -39,7 +40,8 @@
 	"postCreateCommand":"poetry config virtualenvs.create false && poetry install",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8080],
-
+	
+	// Mounted volume
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
 	  ]
