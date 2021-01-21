@@ -1,5 +1,7 @@
 # Devcontainer demo (Python API)
-This is a simple demo using the powerful [Remote containers](https://code.visualstudio.com/docs/remote/containers) feature from VS Code to enable your full development environment containerized.
+This repo serves as an example from a Blog post I wrote [here](https://medium.com/amboss/dockerize-your-development-environment-with-vs-code-cac9e7a60751).
+
+Simple demo using the powerful [Remote containers](https://code.visualstudio.com/docs/remote/containers) feature from VS Code to enable your full development environment containerized.
 
 Requirements :
 * Docker
@@ -15,6 +17,7 @@ The project is a simple fastapi project with one endpoint.
 
 
 # Tests
+Assuming you are inside the devcontainer, you can run :
 ```
 pytest
 ```
